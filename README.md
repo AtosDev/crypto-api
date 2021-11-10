@@ -19,4 +19,4 @@ npm run dev
 
 3. Open [http://localhost:3000/cryptonews](http://localhost:3000/cryptonews) with your browser to see the results of the scrape in your terminal. You can also use certain paramters to get news from individual sources.
 
- **You must have [chrome://extensions/?id=gbmdgpbipfallnflgajpaliibnhdgobh](Json Viewer) installed in chrome extensions, to view the response in a good manner**
+You must have [chrome://extensions/?id=gbmdgpbipfallnflgajpaliibnhdgobh](Json Viewer) installed in chrome extensions, to view the response in a good manner
