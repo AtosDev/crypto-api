@@ -1,8 +1,8 @@
 {
-  "name": "hospital-management-api",
+  "name": "crypto-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
     "start": "node index.mjs",
     "dev": "nodemon index.mjs",
