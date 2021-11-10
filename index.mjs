@@ -1,7 +1,7 @@
 //scraping api 
 //CRYPTO NEWS SCRAPING API
 
-import express, { response } from "express";
+import express from "express";
 import axios from "axios";
 import cheerio from "cheerio";
 
