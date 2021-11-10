@@ -1,4 +1,5 @@
-//scraping api
+//scraping api 
+//CRYPTO NEWS SCRAPING API
 
 import express, { response } from "express";
 import axios from "axios";
@@ -11,21 +12,21 @@ const app = express()
 //getting multiple sources to search from
 const newspapers = [
   {
-    name: "thetimes",
-    address: "https://www.thetimes.co.uk/environment/climate-change",
+    name: "investopedia",
+    address: "https://www.investopedia.com/cryptocurrency-news-5114163",
     base: ''
   },
 
   {
-    name: "guardian",
-    address: "https://www.theguardian.com/environment/climate-crisis",
-    base: ''
+    name: "coindesk-market",
+    address: "https://www.coindesk.com/markets",
+    base: 'https://www.coindesk.com' // was not giving us full links, we added base to it to make it full
   },
 
   {
-    name: "telegraph",
-    address: "https://www.telegraph.co.uk/climate-change",
-    base: 'https://www.telegraph.co.uk'  //telegraph was not giving us full link, so we added the missing base in it
+    name: "coindesk",
+    address: "https://www.coindesk.com/",
+    base: 'https://www.coindesk.com'  
   },
 ]
 
@@ -38,7 +39,7 @@ newspapers.forEach((info) => {
             const html = response.data
             const $ = cheerio.load(html)
 
-            $('a:contains("climate")', html).each(function () {
+            $('a:contains("coin")', html).each(function () {
                 const title = $(this).text()
                 const url = $(this).attr('href')
 
@@ -60,7 +61,7 @@ app.get("/", (req, res) => {
   res.json("This is API earn Homepage")
 })
 
-app.get('/news/:newspaperid', async (req,res) => {
+app.get('/cryptonews/:newspaperid', async (req,res) => {
     //console.log(req);
     //console.log(req.params); //will log out { newspaperid: 'anything in newspaperid' }, this is our params
     //console.log(req.params.newspaperid); //will give us the what 'anything in newspaperid'.
@@ -81,7 +82,7 @@ app.get('/news/:newspaperid', async (req,res) => {
 
             const seprateDATA = [];
 
-            $("a:contains('climate')", html).each(function () {
+            $("a:contains('coin')", html).each(function () {
                 const title = $(this).text()
                 const url = $(this).attr('href')
 
@@ -96,7 +97,7 @@ app.get('/news/:newspaperid', async (req,res) => {
         .catch((err) => {console.log(err)})      
 })
 
-app.get('/news', (req, res) => {
+app.get('/cryptonews', (req, res) => {
     console.log(' This will log out when ever someone Refreshes the page');
   res.json(DATA)
 })
